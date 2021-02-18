@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 1345846515}
   - component: {fileID: 1345846514}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: CubeyBoi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -237,7 +237,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84f8de736e02bd54e890e3dc7d0ba64a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
+  moveForce: 0.5
+  maxSpeed: 3
+  moveVar: 0.6
+  targetlength: 1.5
 --- !u!54 &1345846515
 Rigidbody:
   m_ObjectHideFlags: 0
