@@ -15,10 +15,17 @@ public class BoidController : MonoBehaviour
     private float targetlength = 1.5f;
     private Rigidbody rb;
 
+    public bool returnBack = false;
+    private Stack<Vector3> returnNodes = new Stack<Vector3>();
+    [SerializeField]
+    private float nodePlaceTime = 1;
+    private float nodeTimer;
+
     
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        moveTarget = transform.TransformPoint(new Vector3(Random.Range(-1, 1), 0, Random.Range(-1, 1)));
     }
 
 
@@ -26,9 +33,29 @@ public class BoidController : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, moveTarget) < 0.2f)
         {
-            moveTarget = new Vector3(Random.Range(-moveVar, moveVar), 0, 1) * targetlength;
-            moveTarget = transform.TransformPoint(moveTarget);
-            Debug.DrawLine(transform.position, moveTarget, Color.red, 100);
+            if (returnBack)
+            {
+                moveTarget = returnNodes.Pop();
+            }
+
+            else
+            {
+                moveTarget = new Vector3(Random.Range(-moveVar, moveVar), 0, 1) * targetlength;
+                moveTarget = transform.TransformPoint(moveTarget);
+                Debug.DrawLine(transform.position, moveTarget, Color.red, 100);
+            }           
+        }
+
+
+        if (nodeTimer < 0 && !returnBack)
+        {
+            returnNodes.Push(transform.position);
+            nodeTimer = nodePlaceTime;
+        }
+
+        else
+        {
+            nodeTimer -= Time.deltaTime;
         }
     }
 
