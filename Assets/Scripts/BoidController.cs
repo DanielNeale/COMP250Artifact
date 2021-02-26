@@ -21,7 +21,19 @@ public class BoidController : MonoBehaviour
     private float nodePlaceTime = 1;
     private float nodeTimer;
 
-    
+    [SerializeField]
+    private float antenneaLength = 2.0f;
+
+    [SerializeField]
+    private GameObject pheremone = null;
+    private Transform newPheremone;
+    private bool placePheremone = false;
+    [SerializeField]
+    private float pheremonePlaceTime = 1;
+    private float pheremoneTimer;
+
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -31,22 +43,14 @@ public class BoidController : MonoBehaviour
 
     void Update()
     {
+        // Find new target to move to
         if (Vector3.Distance(transform.position, moveTarget) < 0.2f)
         {
-            if (returnBack)
-            {
-                moveTarget = returnNodes.Pop();
-            }
-
-            else
-            {
-                moveTarget = new Vector3(Random.Range(-moveVar, moveVar), 0, 1) * targetlength;
-                moveTarget = transform.TransformPoint(moveTarget);
-                Debug.DrawLine(transform.position, moveTarget, Color.red, 100);
-            }           
+            CalculateTarget();
         }
 
 
+        // Creates a stack of return nodes
         if (nodeTimer < 0 && !returnBack)
         {
             returnNodes.Push(transform.position);
@@ -56,6 +60,38 @@ public class BoidController : MonoBehaviour
         else
         {
             nodeTimer -= Time.deltaTime;
+        }
+
+
+        if (placePheremone)
+        {
+            if (pheremoneTimer < 0)
+            {
+                Instantiate(newPheremone.GetChild(0), transform.position, transform.rotation, newPheremone);
+                pheremoneTimer = pheremonePlaceTime;
+            }
+
+            pheremoneTimer -= Time.deltaTime;
+        }
+
+        if (!returnBack)
+        {
+            placePheremone = false;
+        }
+
+
+        // Detects objects infront of the boid
+        RaycastHit hit;
+        Debug.DrawRay(transform.position, transform.forward * antenneaLength);
+
+        if (Physics.Raycast(transform.position, transform.forward, out hit, antenneaLength))
+        {
+            if (hit.transform.CompareTag("Food"))
+            {
+                returnBack = true;
+                CalculateTarget();
+                CreateTrail();
+            }
         }
     }
 
@@ -70,5 +106,29 @@ public class BoidController : MonoBehaviour
         {
             rb.velocity = rb.velocity.normalized * maxSpeed;
         }
+    }
+
+
+    private void CalculateTarget()
+    {
+        if (returnBack && returnNodes.Count > 0)
+        {
+            moveTarget = returnNodes.Pop();
+        }
+
+        else
+        {
+            returnBack = false;
+            moveTarget = new Vector3(Random.Range(-moveVar, moveVar), 0, 1) * targetlength;
+            moveTarget = transform.TransformPoint(moveTarget);
+            Debug.DrawLine(transform.position, moveTarget, Color.red, 100);
+        }
+    }
+
+
+    private void CreateTrail()
+    {
+        newPheremone = Instantiate(pheremone, transform.position, transform.rotation, null).transform;
+        placePheremone = true;
     }
 }
