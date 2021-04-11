@@ -82,7 +82,7 @@ public class BoidController : MonoBehaviour
 
         // Detects objects infront of the boid
         RaycastHit hit;
-        Debug.DrawRay(transform.position, transform.forward * antenneaLength);
+        //Debug.DrawRay(transform.position, transform.forward * antenneaLength);
 
         if (Physics.Raycast(transform.position, transform.forward, out hit, antenneaLength))
         {

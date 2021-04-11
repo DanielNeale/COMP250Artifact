@@ -222,7 +222,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &580264100
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -315,7 +315,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &674471272
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -408,7 +408,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1053564167
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -501,7 +501,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1060783534
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -589,6 +589,7 @@ GameObject:
   - component: {fileID: 1345846517}
   - component: {fileID: 1345846516}
   - component: {fileID: 1345846515}
+  - component: {fileID: 1345846520}
   - component: {fileID: 1345846514}
   m_Layer: 0
   m_Name: CubeyBoi
@@ -606,19 +607,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1345846513}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84f8de736e02bd54e890e3dc7d0ba64a, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c08225be46248e42b835934f7f0e661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveForce: 0.5
   maxSpeed: 3
-  moveVar: 0.6
+  moveVar: 0.1
   targetlength: 1.5
   returnBack: 0
-  nodePlaceTime: 1
-  antenneaLength: 1.5
-  pheremone: {fileID: 1477267474545384743, guid: 735403094705a014c81c904f7db6f055,
-    type: 3}
-  pheremonePlaceTime: 1
 --- !u!54 &1345846515
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -709,6 +705,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1345846520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1345846513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22d5c90b951d15f40bf269242c0723cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveForce: 0.5
+  maxSpeed: 3
 --- !u!1 &1533309486
 GameObject:
   m_ObjectHideFlags: 0
