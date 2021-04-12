@@ -222,7 +222,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &580264100
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -231,7 +231,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 580264099}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -315,7 +315,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &674471272
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -324,7 +324,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 674471271}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -408,7 +408,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &1053564167
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -417,7 +417,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1053564166}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -501,7 +501,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &1060783534
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -510,7 +510,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1060783533}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -612,7 +612,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveForce: 0.5
   maxSpeed: 3
-  moveVar: 0.1
+  pheremone: {fileID: 1477267474545384743, guid: 735403094705a014c81c904f7db6f055,
+    type: 3}
+  pheremonePlaceTime: 1
+  moveVar: 0.3
   targetlength: 1.5
   returnBack: 0
 --- !u!54 &1345846515
@@ -629,7 +632,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 84
   m_CollisionDetection: 0
 --- !u!65 &1345846516
 BoxCollider:
@@ -719,6 +722,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveForce: 0.5
   maxSpeed: 3
+  pheremone: {fileID: 0}
+  pheremonePlaceTime: 1
 --- !u!1 &1533309486
 GameObject:
   m_ObjectHideFlags: 0

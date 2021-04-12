@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Depricated
+/// </summary>
+
 public class BoidController : MonoBehaviour
 {
     private Vector3 moveTarget;

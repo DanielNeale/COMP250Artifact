@@ -12,7 +12,7 @@ public class Scout : AgentBase
     private Stack<Vector3> returnNodes = new Stack<Vector3>();
 
 
-    protected override Vector3 MoveTarget()
+    protected override Vector3 CalcMoveTarget()
     {
         Vector3 target = Vector3.zero;
 
@@ -24,11 +24,21 @@ public class Scout : AgentBase
         else
         {
             returnBack = false;
+            createTrail = false;
             target = new Vector3(Random.Range(-moveVar, moveVar), 0, 1) * targetlength;
             target = transform.TransformPoint(target);
             Debug.DrawLine(transform.position, target, Color.red, 100);
+
+            returnNodes.Push(target);
         }
 
         return target;
+    }
+
+
+    protected override void FoundFood()
+    {
+        returnBack = true;
+        StartTrail();
     }
 }
