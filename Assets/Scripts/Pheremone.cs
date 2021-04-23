@@ -12,6 +12,6 @@ public class Pheremone : MonoBehaviour
             {
                 Debug.DrawLine(transform.GetChild(i).position, transform.GetChild(i + 1).position, Color.blue);
             }
-        }       
+        }
     }
 }
